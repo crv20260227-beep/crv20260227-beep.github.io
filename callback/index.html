@@ -7,22 +7,26 @@
 </head>
 <body style="font-family: sans-serif; text-align: center; padding-top: 50px; background-color: #f4f4f9;">
     <h2 style="color: #333;">登入授權成功！</h2>
-    <p style="color: #666; margin-bottom: 30px;">請點擊下方按鈕安全返回您的 MyTeslaApp：</p>
+    <p style="color: #666; margin-bottom: 30px;">正在自動返回 MyTeslaApp...</p>
     
-    <!-- 手動返回 App 按鈕 -->
-    <a id="returnBtn" href="#" style="display: inline-block; background: #D32F2F; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-size: 18px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">返回 MyTeslaApp 繼續</a>
+    <a id="returnBtn" href="#" style="display: inline-block; background: #D32F2F; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-size: 18px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">點擊此處手動返回 App</a>
 
     <script>
-        // 自動取得當前帶有授權碼 (code) 的完整網址，並賦值給按鈕
-        const fullUrl = window.location.href;
+        // 取得當前網址的所有參數 (包含 code 與 state)
+        const search = window.location.search;
+        
+        // 組合自訂通道的返回網址
+        const customSchemeUrl = "myteslaapp://callback" + search;
+        
+        // 設定按鈕的連結
         const btn = document.getElementById('returnBtn');
-        btn.href = fullUrl;
+        btn.href = customSchemeUrl;
 
-        // 頁面載入後 1 秒自動嘗試觸發跳轉
+        // 頁面載入後 0.5 秒自動嘗試觸發跳轉
         window.onload = function() {
             setTimeout(function() {
-                btn.click();
-            }, 1000);
+                window.location.href = customSchemeUrl;
+            }, 500);
         };
     </script>
 </body>
