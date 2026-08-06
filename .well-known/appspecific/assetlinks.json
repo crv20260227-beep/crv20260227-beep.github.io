@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.example.myteslaapp",
+      "sha256_cert_fingerprints": [
+        "E3:B6:07:33:8B:55:A3:FB:9F:98:0F:EB:39:36:F3:76:9E:15:7C:10:39:E1:43:C8:66:92:D3:F6:D0:C3:C3:06"
+      ]
+    }
+  }
+]
